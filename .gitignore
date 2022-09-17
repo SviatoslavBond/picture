@@ -1,0 +1,7 @@
+/node_modules
+/dist
+/OpenServerdomains
+**/scss
+**/img
+**/icons
+**/fonts
