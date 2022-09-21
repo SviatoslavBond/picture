@@ -1,3 +1,4 @@
+import { postDate } from "../services/reqests";
 
 const forms = () => {
 	const forms = document.querySelectorAll('form'),
@@ -10,8 +11,8 @@ const forms = () => {
 			spinner: 'assets/img/spinner.gif',
 			ok: 'assets/img/ok.png',
 			failure: 'assets/img/fail.png',
-		},
-		phoneInput = document.querySelectorAll('input[name = "user_phone"]');
+		};
+	const textArea = document.querySelector('textarea[name="message"]');
 	const fileInput = document.querySelectorAll('input[type="file"]');// всі інпути  в які завантажуються картинки
 	const fileLoad = document.querySelectorAll('.file_upload > div'); // блок куди записується імя завантажуваного файла 
 
@@ -29,16 +30,6 @@ const forms = () => {
 		designer: 'assets/server.php',
 		question: 'assets/question.php'
 	};
-
-
-	const postDate = async (url, data) => {
-		let res = await fetch(url, {
-			method: 'POST',
-			body: data,
-		});
-		return await res.text();
-	};
-
 	const clearInputs = () => {
 		input.forEach(item => {
 			item.value = '';
@@ -46,6 +37,7 @@ const forms = () => {
 		fileLoad.forEach(item => {
 			item.textContent = 'Файл не выбран';
 		});
+		textArea.value = '';
 	};
 
 	forms.forEach(form => {
