@@ -6,7 +6,6 @@ const calc = (costPicture) => {
 	const options = document.querySelector('#options');
 	const result = document.querySelector('.calc-price');
 	const inputDiscount = document.querySelector('.promocode');
-	const discount = 30;
 	let sum = 0;
 	const promocod = 'IWANTPOPART';
 
@@ -32,8 +31,9 @@ const calc = (costPicture) => {
 			result.textContent = 'Пожалуйста виберете размер картины и материал картины!!';
 		} else if (inputDiscount.value == promocod) {
 			result.textContent = Math.round(sum * 0.7);
+			costPicture.cost = Math.round(sum * 0.7);
 		} else {
-			costPicture.suma = sum;
+			costPicture.cost = sum;
 			result.textContent = sum;
 		}
 	}

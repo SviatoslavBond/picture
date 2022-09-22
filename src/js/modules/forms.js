@@ -29,7 +29,6 @@ const forms = (costPicture) => {
 			fileLoad[i].textContent = name;
 		});
 	});
-	// // validationInputsForNum(phoneInput);
 	const path = {
 		designer: 'assets/server.php',
 		question: 'assets/question.php'
@@ -46,7 +45,6 @@ const forms = (costPicture) => {
 		material.selectedIndex = 0;
 		options.selectedIndex = 0;
 		resultSumCalc.textContent = 'Для расчета нужно выбрать размер картины и материал картины';
-		// size.value = size.selectedOptions[0];
 	};
 
 	forms.forEach(form => {
@@ -71,7 +69,6 @@ const forms = (costPicture) => {
 
 			const formDate = new FormData(form);
 			let api;
-			// form.closest('.popup-design') || form.closest('.calc') ? api = path.designer : api = path.question;
 			form.closest('.popup-design') ? api = path.designer : api = path.question;
 			console.log(api);
 			for (let key in costPicture) {
