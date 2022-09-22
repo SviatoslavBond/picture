@@ -1,6 +1,6 @@
 import { postDate } from "../services/reqests";
 
-const forms = () => {
+const forms = (costPicture) => {
 	const forms = document.querySelectorAll('form'),
 		input = document.querySelectorAll('input'),
 
@@ -15,6 +15,10 @@ const forms = () => {
 	const textArea = document.querySelector('textarea[name="message"]');
 	const fileInput = document.querySelectorAll('input[type="file"]');// всі інпути  в які завантажуються картинки
 	const fileLoad = document.querySelectorAll('.file_upload > div'); // блок куди записується імя завантажуваного файла 
+	const size = document.querySelector('#size');
+	const material = document.querySelector('#material');
+	const options = document.querySelector('#options');
+	const resultSumCalc = document.querySelector('.calc-price');
 
 	fileInput.forEach((item, i) => {
 		item.addEventListener('input', () => {
@@ -38,6 +42,11 @@ const forms = () => {
 			item.textContent = 'Файл не выбран';
 		});
 		textArea.value = '';
+		size.selectedIndex = 0;
+		material.selectedIndex = 0;
+		options.selectedIndex = 0;
+		resultSumCalc.textContent = 'Для расчета нужно выбрать размер картины и материал картины';
+		// size.value = size.selectedOptions[0];
 	};
 
 	forms.forEach(form => {
@@ -62,9 +71,13 @@ const forms = () => {
 
 			const formDate = new FormData(form);
 			let api;
-			form.closest('.popup-design') || form.closest('.calc') ? api = path.designer : api = path.question;
+			// form.closest('.popup-design') || form.closest('.calc') ? api = path.designer : api = path.question;
+			form.closest('.popup-design') ? api = path.designer : api = path.question;
 			console.log(api);
-
+			for (let key in costPicture) {
+				formDate.append(key, costPicture[key]);
+			}
+			console.log(costPicture);
 			postDate(api, formDate)
 				.then(res => {
 

@@ -77,7 +77,6 @@ const modals = () => {
 		return scrollWidth;
 	}
 	function showModalByScroll() {
-		console.log('on');
 		if (window.pageYOffset + document.documentElement.clientHeight >= document.documentElement.scrollHeight && clickCount === 0) {
 			document.querySelector('.fixed-gift').click();
 			window.removeEventListener('scroll', showModalByScroll);
