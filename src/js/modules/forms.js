@@ -71,9 +71,12 @@ const forms = (costPicture) => {
 			let api;
 			form.closest('.popup-design') ? api = path.designer : api = path.question;
 			console.log(api);
-			for (let key in costPicture) {
-				formDate.append(key, costPicture[key]);
+			if (form.closest('.calc')) {
+				for (let key in costPicture) {
+					formDate.append(key, costPicture[key]);
+				}
 			}
+
 			console.log(costPicture);
 			postDate(api, formDate)
 				.then(res => {
