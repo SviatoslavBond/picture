@@ -6,6 +6,7 @@ import forms from "./modules/forms";
 import mask from "./modules/mask";
 import modals from "./modules/modals";
 import showMoreStyles from "./modules/showMoreStyles";
+import showPicture from "./modules/showPicture";
 import slider from "./modules/slider";
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -19,5 +20,6 @@ window.addEventListener('DOMContentLoaded', () => {
 	checkTextInputs('[name="message"]');
 	showMoreStyles('.button-styles', '.styles .row');
 	calc(statePicture);
-	filterImage('.portfolio-menu', '.portfolio-block');
+	filterImage();
+	showPicture();
 });
