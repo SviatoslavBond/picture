@@ -6,5 +6,6 @@ const checkTextInputs = (selector) => {
 			this.value = this.value.replace(/[a-z]/gi, '');
 		});
 	});
+
 };
 export default checkTextInputs;

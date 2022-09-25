@@ -13,16 +13,17 @@ const mask = (selector) => {
 		}
 	}
 	function createMask(event) {
-		let matrix = '+7 (___) ___ __ __';
+		let matrix = '+38 (___) ___ __ __';
 		let i = 0;
 		let def = matrix.replace(/\D/g, '');
 		let val = this.value.replace(/\D/g, ''); //  видаляє з введденого текста все що не є цифрою, і результат записується в перемінну val
 		if (def.length >= val.length) {// встановлюється значаення по дефолту, коли користувач клікнув на інпут і не дозволяє видалити +7
 			val = def;
 		}
-		// this.value = '+7 (___) ___-__-__'.replace(/./g, function (a) { //код Івана
-		// 	return /[_\d]/.test(a) && i < val.length ? val.charAt(i++) : i >= val.length ? '' : a;
-		// });
+
+		this.value = '+7 (___) ___-__-__'.replace(/./g, function (a) { //код Івана
+			return /[_\d]/.test(a) && i < val.length ? val.charAt(i++) : i >= val.length ? '' : a;
+		});
 
 		// this.value = matrix.split('').map(a => /[_\d]/.test(a) && i < val.length ? val.charAt(i++) : i >= val.length ? '' : a).join('');
 

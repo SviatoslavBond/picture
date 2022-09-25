@@ -1,6 +1,7 @@
 'use strict';
 import calc from "./modules/calc";
 import checkTextInputs from "./modules/checkTextInputs";
+import filterImage from "./modules/filtration";
 import forms from "./modules/forms";
 import mask from "./modules/mask";
 import modals from "./modules/modals";
@@ -18,4 +19,5 @@ window.addEventListener('DOMContentLoaded', () => {
 	checkTextInputs('[name="message"]');
 	showMoreStyles('.button-styles', '.styles .row');
 	calc(statePicture);
+	filterImage('.portfolio-menu', '.portfolio-block');
 });

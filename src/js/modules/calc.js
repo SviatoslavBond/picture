@@ -1,5 +1,4 @@
 import { getDate } from "../services/reqests";
-
 const calc = (state) => {
 	const size = document.querySelector('#size');
 	const material = document.querySelector('#material');
@@ -8,14 +7,13 @@ const calc = (state) => {
 	const inputDiscount = document.querySelector('.promocode');
 	let sum = 0;
 	const promocod = 'IWANTPOPART';
-
 	function costCalculation(target) {
-
-		sum = size.value * material.value + (+options.value);
-		target == size ? state.size = target.options[target.selectedIndex].textContent.trim() : false;
-		target == material ? state.material = target.options[target.selectedIndex].textContent.trim() : false;
-		target == options ? state.option = target.options[target.selectedIndex].textContent.trim() : false;
+		const selectTextValue = target.options[target.selectedIndex].textContent.trim();
+		target == size ? state.size = selectTextValue : false;
+		target == material ? state.material = selectTextValue : false;
+		target == options ? state.option = selectTextValue : false;
 		target == inputDiscount && inputDiscount.value != '' ? state.promocod = target.value.trim() : false;
+		sum = size.value * material.value + (+options.value);
 
 		if (size.value == '' || material.value == '') {
 			result.textContent = 'Пожалуйста виберете размер картины и материал картины!!';
@@ -27,26 +25,27 @@ const calc = (state) => {
 			result.textContent = sum;
 		}
 	}
-	function getValue(url, attribute, event) {
+	function getValue(url, event) {
 		const target = event.target;
 		const textValue = target.options[target.selectedIndex].textContent.trim();
 		getDate(url)
 			.then(res => {
-				target.options[target.selectedIndex].setAttribute(attribute, res[textValue]);
+				target.options[target.selectedIndex].setAttribute('value', res[textValue]);
 				costCalculation(target);
 			});
 	}
 
 	size.addEventListener('change', function (e) {
-		getValue('http://localhost:3000/size', 'value', e);
+		getValue('http://localhost:3000/size', e);
 	});
 	material.addEventListener('change', function (e) {
-		getValue('http://localhost:3000/material', 'value', e);
+		getValue('http://localhost:3000/material', e);
 	});
 	options.addEventListener('change', function (e) {
-		getValue('http://localhost:3000/options', 'value', e);
+		getValue('http://localhost:3000/options', e);
 	});
 
 	inputDiscount.addEventListener('input', costCalculation);
+
 };
 export default calc;
