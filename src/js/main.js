@@ -1,4 +1,5 @@
 'use strict';
+import acordion from "./modules/acordion";
 import calc from "./modules/calc";
 import checkTextInputs from "./modules/checkTextInputs";
 import filterImage from "./modules/filtration";
@@ -22,4 +23,5 @@ window.addEventListener('DOMContentLoaded', () => {
 	calc(statePicture);
 	filterImage();
 	showPicture();
+	acordion('.accordion-heading', '.accordion-block');
 });
