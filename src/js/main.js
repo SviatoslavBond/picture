@@ -1,11 +1,14 @@
 'use strict';
 import acordion from "./modules/acordion";
+import burger from "./modules/burgerMenu";
 import calc from "./modules/calc";
 import checkTextInputs from "./modules/checkTextInputs";
+import drop from "./modules/drop";
 import filterImage from "./modules/filtration";
 import forms from "./modules/forms";
 import mask from "./modules/mask";
 import modals from "./modules/modals";
+import scrolling from "./modules/scrolling";
 import showMoreStyles from "./modules/showMoreStyles";
 import showPicture from "./modules/showPicture";
 import slider from "./modules/slider";
@@ -24,4 +27,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	filterImage();
 	showPicture();
 	acordion('.accordion-heading', '.accordion-block');
+	burger('.burger-menu', '.burger');
+	scrolling();
+	drop();
 });

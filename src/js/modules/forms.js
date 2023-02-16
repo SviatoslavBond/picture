@@ -22,6 +22,7 @@ const forms = (costPicture) => {
 
 	fileInput.forEach((item, i) => {
 		item.addEventListener('input', () => {
+			// console.log(item.files);
 			const fileName = item.files[0].name.split('.');//сторюється масив з двох елементів :назва картинки і розширення
 			let dots;
 			fileName[0].length > 5 ? dots = '...' : dots = '.';
@@ -66,18 +67,15 @@ const forms = (costPicture) => {
 			textMessage.textContent = message.loading;
 			statusMessage.appendChild(textMessage);
 
-
 			const formDate = new FormData(form);
 			let api;
 			form.closest('.popup-design') ? api = path.designer : api = path.question;
-			console.log(api);
 			if (form.closest('.calc')) {
+				api = path.designer;
 				for (let key in costPicture) {
 					formDate.append(key, costPicture[key]);
 				}
 			}
-
-			console.log(costPicture);
 			postDate(api, formDate)
 				.then(res => {
 

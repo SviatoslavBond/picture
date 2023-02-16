@@ -1,18 +1,39 @@
 const acordion = (triggerSelector, itemsSelector) => {
 	const btns = document.querySelectorAll(triggerSelector);
+	const blocks = document.querySelectorAll(itemsSelector);
 	btns.forEach(btn => {
 		btn.addEventListener('click', function () {
+			blocks.forEach(block => {
+				if (this.nextElementSibling.classList.contains('active-content')) return;
+				block.classList.remove('active-content');
+			});
+
+			btns.forEach(btn => {
+				if (this.classList.contains('active-style')) return;
+				btn.classList.remove('active-style');
+			});
+
 			this.classList.toggle('active-style');
 			this.nextElementSibling.classList.toggle('active-content');
-			if (this.classList.contains('active-style')) {
-				this.nextElementSibling.style.maxHeight = this.nextElementSibling.scrollHeight + 80 + 'px';
-			} else {
-				this.nextElementSibling.style.maxHeight = '0px';
-			}
 		});
 	});
 };
 export default acordion;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // const btns = document.querySelectorAll('..accordion-heading');
 // 	const wrapper = document.querySelector('#accordion');

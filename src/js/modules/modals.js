@@ -8,23 +8,13 @@ const modals = () => {
 			modal = document.querySelector(modalSelector),
 			close = document.querySelector(closeSelector);
 
-		// widthWindow = document.querySelector('#width'),
-		// heightWindow = document.querySelector('#height'),
-
 		trigger.forEach(el => {
 			el.addEventListener('click', (e) => {
 				if (e.target) {
 					e.preventDefault();
 				}
 				clickCount++;
-				// if (el.classList.contains('popup_calc_button')) {
-				// 	if (widthWindow.value === '') {
-				// 		widthWindow.style.border = '1px solid red';
-				// 	} if (heightWindow.value === '') {
-				// 		heightWindow.style.border = '1px solid red';
-				// 		return;
-				// 	}
-				// }
+
 				closeAllModal();
 				if (destroy) {
 					el.remove();
@@ -39,11 +29,6 @@ const modals = () => {
 
 			});
 		});
-		// [widthWindow, heightWindow].forEach(input => {
-		// 	input.addEventListener('input', function () {
-		// 		this.style.border = '1px solid #ccc';
-		// 	});
-		// });
 		close.addEventListener('click', (e) => {
 			closeAllModal();
 			document.body.classList.remove('modal-open');

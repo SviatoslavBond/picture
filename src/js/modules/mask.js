@@ -13,7 +13,7 @@ const mask = (selector) => {
 		}
 	}
 	function createMask(event) {
-		let matrix = '+38 (___) ___ __ __';
+		let matrix = '+7 (___) ___ __ __';
 		let i = 0;
 		let def = matrix.replace(/\D/g, '');
 		let val = this.value.replace(/\D/g, ''); //  видаляє з введденого текста все що не є цифрою, і результат записується в перемінну val
@@ -25,20 +25,6 @@ const mask = (selector) => {
 			return /[_\d]/.test(a) && i < val.length ? val.charAt(i++) : i >= val.length ? '' : a;
 		});
 
-		// this.value = matrix.split('').map(a => /[_\d]/.test(a) && i < val.length ? val.charAt(i++) : i >= val.length ? '' : a).join('');
-
-		this.value = matrix.split('').map((item) => { //перероблений під map()
-			if (/[_\d]/.test(item) && i < val.length) {
-				return val.charAt(i++);
-			} else {
-				if (i >= val.length) {
-					return '';
-				}
-				else {
-					return item;
-				}
-			}
-		}).join('');
 		if (event.type === 'blur') {
 			if (this.value.length == 2) {//блок кода який спрацьовує коли інпут втрачає фокус і довжина поля інпут  == 2 тобто користувач ще сам нічого не ввів , то інпут повністю очищається
 				this.value = '';
